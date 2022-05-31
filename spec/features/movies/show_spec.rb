@@ -28,7 +28,7 @@ RSpec.describe Movie, type: :feature do
         expect(actor2.name).to appear_before(actor1.name)
         expect(actor2.name).to appear_before(actor3.name)
         expect(actor3.name).to_not appear_before(actor2.name)
-        expect(page).to have_content((actor1.age + actor2.age + actor3.age) / 3)
+        expect(page).to have_content(37)
       end
     end
   end
