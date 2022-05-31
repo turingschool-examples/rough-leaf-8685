@@ -33,6 +33,14 @@ RSpec.describe 'Movie Show Page' do
         expect(page).to have_content("Average Age: 50") 
         expect(page).to_not have_content("Sarah") 
     end
-    
-    
+
+    it "has a form to add an actor to the movie" do
+        visit "/movies/#{@movie_1.id}"
+        expect(page).to_not have_content("Sarah")
+        fill_in :add_actor,	with: "Sarah"
+        click_button "Submit"
+        expect(current_path).to eq("/movies/#{@movie_1.id}")
+        expect(page).to have_content("Sarah")
+    end
+
 end
