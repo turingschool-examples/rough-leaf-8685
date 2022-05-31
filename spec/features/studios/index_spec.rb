@@ -15,7 +15,7 @@ describe 'studio index page' do
 
   it "displays each studio's name, location and movies associated" do
     visit '/studios'
-
+    save_and_open_page
     within "#studio-#{@marvel.id}" do
       expect(page).to have_content("Marvel Studios")
       expect(page).to_not have_content("Universal Studios")
