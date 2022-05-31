@@ -50,4 +50,49 @@ RSpec.describe "Movies Show View", type: :feature do
       expect(page).to have_content("Average Age of Actors: 68.67")
     end
   end
+
+  describe "User Story 3 - Add an Actor to a Movie" do
+    let!(:universal) { Studio.create!(name: "Universal Studios", location: "Hollywood") }
+    let!(:raiders) { Movie.create!(title: "Raiders of the Lost Ark", creation_year: 1981, genre: "Action/Adventure", studio: universal) }
+    let!(:bttf) { Movie.create!(title: "Back to the Future", creation_year: 1985, genre: "Science Fiction", studio: universal) }
+    let!(:indy) { Actor.create!(name: "Harrison Ford", age: 78) }
+    let!(:doc) { Actor.create!(name: "Christopher Lloyd", age: 83) }
+    let!(:marty) { Actor.create!(name: "Michael J. Fox", age: 60) }
+    let!(:biff) { Actor.create!(name: "Thomas F. Wilson", age: 63) }
+    let!(:actor_movie1) { ActorMovie.create!(actor: indy, movie: raiders) }
+    let!(:actor_movie3) { ActorMovie.create!(actor: marty, movie: bttf) }
+    let!(:actor_movie4) { ActorMovie.create!(actor: doc, movie: bttf) }
+
+    # As a user,
+    # When I visit a movie show page,
+    # I do not see any actors listed that are not part of the movie
+    # And I see a form to add an actor to this movie
+    # When I fill in the form with the name of an actor that exists in the database
+    # And I click submit
+    # Then I am redirected back to that movie's show page
+    # And I see the actor's name is now listed
+    # (You do not have to test for a sad path, for example if the name submitted is not an existing actor)
+    it "has a form to add an actor to a movie" do
+      visit "/movies/#{bttf.id}"
+
+      expect(page).to have_content(marty.name)
+      expect(page).to have_content(doc.name)
+      expect(page).to_not have_content(indy.name)
+      expect(page).to_not have_content(biff.name)
+
+      expect(page).to have_content("Add an actor to this movie:")
+
+      fill_in :actor_name, with: "Thomas F. Wilson"
+      click_button "Submit"
+
+      expect(current_path).to eq("/movies/#{bttf.id}")
+
+      expect(page).to have_content(marty.name)
+      expect(page).to have_content(doc.name)
+      expect(page).to have_content(biff.name)
+      expect(page).to_not have_content(indy.name)
+
+    end
+
+  end
 end
