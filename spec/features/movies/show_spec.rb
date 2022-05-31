@@ -17,6 +17,7 @@ RSpec.describe "Movie show page" do
     @howard = Actor.create!(name: "Howard Keel", age: 30)
     @judy = Actor.create!(name: "Judy Garland", age: 28)
     @ray = Actor.create!(name: "Ray Bolger", age: 38)
+    @debbie = Actor.create!(name: "Debbie Reynolds", age: 22) 
     
     ActorMovie.create!(actor: @jane, movie: @seven)
     ActorMovie.create!(actor: @jane, movie: @deck)
@@ -84,6 +85,23 @@ RSpec.describe "Movie show page" do
     visit "/movies/#{@seven.id}"
     
     expect(page).to have_content("Average age: 26.5")
+    expect(page).to_not have_content("Average age: 27.67")
+  end
+
+  it "has a form to put an actors name to add to the movie" do
+    visit "/movies/#{@deck.id}"
+
+    fill_in("actor", with: "Debbie Reynolds")
+
+    click_button "Submit"
+
+    expect(current_path).to eq("/movies/#{@deck.id}")
+
+    within("#actor-0") do
+      expect(page).to have_content("Debbie Reynolds")
+      expect(page).to_not have_content("Jane Powell")
+    end
+    expect(page).to have_content("Average age: 26.25")
     expect(page).to_not have_content("Average age: 27.67")
   end
 end
