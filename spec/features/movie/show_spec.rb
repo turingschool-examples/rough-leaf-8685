@@ -68,14 +68,17 @@ RSpec.describe 'Movie Show Page' do
 
     expect(page).to have_content("Add an actor to this movie")
     expect(page).to have_field(:name)
-    expect(page).to have_button("Add Actor")
+    expect(page).to have_button("Submit")
   end
 
   it 'can add an actor through the form, which then shows up' do
     visit "/movies/#{@fishing.id}"
 
+    expect(page).to_not have_content(@sam.name)
+    expect(page).to_not have_content(@alice.name)
+
     fill_in(:name, with: "#{@alice.name}")
-    click_button("Add Actor")
+    click_button("Submit")
 
     expect(page).to have_current_path("/movies/#{@fishing.id}")
 
@@ -83,5 +86,6 @@ RSpec.describe 'Movie Show Page' do
     expect(page).to have_content(@alice.name)
     expect(page).to have_content(@jimbob.name)
     expect(page).to_not have_content(@sam.name)
+    expect(page).to have_content("Average Age of Cast: 64.33")
   end
 end

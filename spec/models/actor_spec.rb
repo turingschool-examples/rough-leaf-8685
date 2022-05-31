@@ -36,6 +36,7 @@ RSpec.describe Actor do
       sam = Actor.create!(name: "Sam Nunya", age: 28)
 
       expect(Actor.find_by_name(sam.name)).to eq(sam)
+      expect(Actor.find_by_name("Jimbob Himself")).to eq(jimbob)
     end
   end
 end
