@@ -8,4 +8,5 @@ Rails.application.routes.draw do
     resources :actors, controller: 'movie_actors', only: [:create]
   end 
   # post '/movies/:id/actors', to: 'movie_actors#create'
+  resources :actors, only: [:show]
 end

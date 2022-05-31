@@ -6,4 +6,10 @@ RSpec.describe Movie do
     it { should have_many :movie_actors}
     it { should have_many(:actors).through(:movie_actors)}
   end
+
+  describe 'instance methods' do 
+    describe 'all actors in a particular movie' do 
+      it '#'
+    end
+  end
 end
