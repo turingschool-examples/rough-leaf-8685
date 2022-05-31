@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  resources :studios
+  resources :studios, only: [:index]
 end
