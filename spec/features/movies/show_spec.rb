@@ -32,7 +32,7 @@ RSpec.describe Movie, type: :feature do
 
       visit "/movies/#{movie_1.id}"
 
-      # save_and_open_page
+      save_and_open_page
       #
       expect(page).to have_content(movie_1.title)
       expect(page).to have_content(movie_1.creation_year)

@@ -3,4 +3,4 @@
   <h3>Genre: <%= @movie.genre %></h3>
 
   <p>Actors on this movie: <%= @movie.actors_age_ascending %> </p>
-  <p>Average Age of all Actors on this Movie: <%= @movie.average_actors_age %> </p>
+  <p>Average Age of all Actors on this Movie: <%= @movie.average_actors_age.round(2) %> </p>
