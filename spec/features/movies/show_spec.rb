@@ -11,28 +11,66 @@ describe 'movie show page' do
     @tom = Actor.create!(name: "Tom Holland", age: 25)
     @rob = Actor.create!(name: "Robert Downey Jr", age: 57)
     @chris = Actor.create!(name: "Chris Hemsworth", age: 38)
+    @gwen = Actor.create!(name: "Gwyneth Paltrow", age: 49)
 
     ActorMovie.create!(movie: @spider, actor: @tom)
     ActorMovie.create!(movie: @spider, actor: @rob)
-    ActorMovie.create!(movie: @thor, actor: @chris)
+    ActorMovie.create!(movie: @spider, actor: @chris)
+    ActorMovie.create!(movie: @iron, actor: @tom)
     ActorMovie.create!(movie: @iron, actor: @rob)
+    ActorMovie.create!(movie: @iron, actor: @gwen)
   end
 
   it "displays the movies title, creation year, and genre" do
     visit "/movies/#{@spider.id}"
 
-    expect(page).to have_content("Spider-Man")
-    expect(page).to_not have_content("Thor")
-    expect(page).to_not have_content("Iron Man")
-    expect(page).to have_content(2021)
-    expect(page).to have_content("action")
+    within "#movie-info" do
+      expect(page).to have_content("Spider-Man")
+      expect(page).to_not have_content("Thor")
+      expect(page).to_not have_content("Iron Man")
+      expect(page).to have_content(2021)
+      expect(page).to have_content("action")
+    end
 
     visit "/movies/#{@iron.id}"
 
-    expect(page).to have_content("Iron Man")
-    expect(page).to_not have_content("Spider-Man")
-    expect(page).to_not have_content("Thor")
-    expect(page).to have_content(2013)
-    expect(page).to have_content("action")
+    within "#movie-info" do
+      expect(page).to have_content("Iron Man")
+      expect(page).to_not have_content("Spider-Man")
+      expect(page).to_not have_content("Thor")
+      expect(page).to have_content(2013)
+      expect(page).to have_content("action")
+    end
   end
+
+  it 'lists all of its actors from oldest to youngest' do
+    visit "/movies/#{@spider.id}"
+
+    within "#movie-actors" do
+      expect("Tom Holland").to appear_before("Chris Hemsworth")
+      expect("Chris Hemsworth").to appear_before("Robert Downey Jr")
+    end
+
+    visit "/movies/#{@iron.id}"
+
+    within "#movie-actors" do
+      expect("Tom Holland").to appear_before("Gwyneth Paltrow")
+      expect("Gwyneth Paltrow").to appear_before("Robert Downey Jr")
+    end
+  end
+
+  it "displays the average age of all the actors" do
+    visit "/movies/#{@spider.id}"
+
+    within "#actor-stats" do
+      expect(page).to have_content("Average Actor Age: 40 years old")
+    end
+
+    visit "/movies/#{@iron.id}"
+
+    within "#actor-stats" do
+      expect(page).to have_content("Average Actor Age: 44 years old")
+    end
+  end
+
 end

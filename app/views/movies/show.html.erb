@@ -1,0 +1,16 @@
+<div id="movie-info">
+<h2> <%= @movie.title %> </h2>
+<p><b>Creation Year:</b> <%= @movie.creation_year %></p>
+<p><b>Genre:</b> <%= @movie.genre %></p>
+</div>
+
+<div id="movie-actors">
+<h3> Actors in <%= @movie.title %> </h3>
+<ol><% @movie.actors.ordered_by_age.each do |actor| %>
+<li><%= actor.name %>, <i><%= actor.age %></i> </li>
+<% end %> </ol>
+</div>
+
+<div id="actor-stats">
+  <p><b>Average Actor Age:</b> <%= @movie.actors.average_age.round %> years old
+</div>

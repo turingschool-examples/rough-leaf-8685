@@ -13,5 +13,4 @@ RSpec.describe Movie do
     it { should validate_presence_of(:genre) }
   end
 
-
 end
