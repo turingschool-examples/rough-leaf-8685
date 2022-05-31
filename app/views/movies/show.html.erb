@@ -1,0 +1,9 @@
+<h1> <%= @movie.title %> Show page </h1><br>
+
+<div> Movie Title: <%= @movie.title %></div>
+<div> Movie Creation Year: <%= @movie.creation_year %></div>
+<div> Movie Genre: <%= @movie.genre %></div>
+<% binding.pry %>
+<% @movie.actors.each do |actor| %>
+  <div>actor.name</div>
+  <% end %>
