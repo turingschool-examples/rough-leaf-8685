@@ -16,10 +16,10 @@ ActiveRecord::Schema.define(version: 2022_05_31_151509) do
   enable_extension "plpgsql"
 
   create_table "actor_movies", force: :cascade do |t|
-    t.bigint "movies_id"
-    t.bigint "actors_id"
-    t.index ["actors_id"], name: "index_actor_movies_on_actors_id"
-    t.index ["movies_id"], name: "index_actor_movies_on_movies_id"
+    t.bigint "movie_id"
+    t.bigint "actor_id"
+    t.index ["actor_id"], name: "index_actor_movies_on_actor_id"
+    t.index ["movie_id"], name: "index_actor_movies_on_movie_id"
   end
 
   create_table "actors", force: :cascade do |t|
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 2022_05_31_151509) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "actor_movies", "actors", column: "actors_id"
-  add_foreign_key "actor_movies", "movies", column: "movies_id"
+  add_foreign_key "actor_movies", "actors"
+  add_foreign_key "actor_movies", "movies"
   add_foreign_key "movies", "studios"
 end
