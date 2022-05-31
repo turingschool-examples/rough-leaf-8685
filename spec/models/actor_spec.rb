@@ -13,7 +13,7 @@ RSpec.describe Actor, type: :model do
     let!(:indy) { Actor.create!(name: "Harrison Ford", age: 78) }
 
     it "orders actors by age" do
-      expect(Actor.actors_by_age).to eq([marty, biff, indy, doc])
+      expect(Actor.order_by_age).to eq([marty, biff, indy, doc])
     end
   end
 
