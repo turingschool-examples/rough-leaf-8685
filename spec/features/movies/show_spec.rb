@@ -30,14 +30,23 @@ RSpec.describe 'movie show page', type: :feature do
     it 'shows movie attributes' do
         visit "/movies/#{@movie7.id}"
         expect(page).to have_content(@movie7.title)
-        expect(page).to have_content(@movie7.creation_date)
+        expect(page).to have_content(@movie7.creation_year)
         expect(page).to have_content(@movie7.genre)
         expect(page).to_not have_content(@movie5.genre)
         expect(page).to_not have_content(@movie2.title)
-        expect(page).to_not have_content(@movie1.creation_date)
+        expect(page).to_not have_content(@movie1.creation_year)
     end
 
     it 'lists actor from youngest to oldest' do
+        visit "/movies/#{@movie7.id}"
+        within "#actor-0" do
+            expect(page).to_not have_content("Mark Hamill")
+            expect(page).to have_content("Carrie Fisher")
+        end
+        within "#actor-3" do
+            expect(page).to_not have_content("Harrison Ford")
+            expect(page).to have_content("Alec Guiness")
+        end
 
     end
 

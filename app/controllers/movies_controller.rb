@@ -1,5 +1,6 @@
 class MoviesController < ApplicationController
-def show
-end
+    def show
+        @movie = Movie.find(params[:movie_id])
+    end
 
 end
