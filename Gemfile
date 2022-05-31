@@ -40,6 +40,7 @@ group :development, :test do
   gem 'launchy'
   gem 'shoulda-matchers'
   gem 'pry'
+  gem 'solargraph'
 end
 
 group :development do
