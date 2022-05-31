@@ -3,3 +3,11 @@
 <h3><%= @movie.title %></h3>
 <p><%= @movie.creation_year %></p>
 <p><%= @movie.genre %></p>
+
+
+<h4>Actors:</h4>
+<div id="actorList">
+<% @movie.actors.by_youngest.each do |actor| %>
+<p class="actors"><%= actor.name %></p>
+<% end %>
+</div>
