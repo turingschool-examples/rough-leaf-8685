@@ -6,10 +6,10 @@ RSpec.describe "Movie show page" do
     @mgm = Studio.create!(name: "Metro Goldwyn Mayer", location: "Hollywood")
     @wb = Studio.create!(name: "Warner Borthers", location: "Los Angeles")
     
-    @seven = @mgm.movies.create!(title: "Seven Brides For Seven Brothers", creation_year: 1954, genre: "musical")
-    @deck = @mgm.movies.create!(title: "Hit The Deck", creation_year: 1955, genre: "musical")
-    @melody = @wb.movies.create!(title: "The Broadway Melody of 1940", creation_year: 1940, genre: "musical")
-    @oz = @wb.movies.create!(title: "The Wizard of Oz", creation_year: 1939, genre: "musical")
+    @seven = @mgm.movies.create!(title: "Seven Brides For Seven Brothers", creation_year: 1954, genre: "Musical")
+    @deck = @mgm.movies.create!(title: "Hit The Deck", creation_year: 1955, genre: "Musical")
+    @melody = @wb.movies.create!(title: "The Broadway Melody of 1940", creation_year: 1940, genre: "Musical")
+    @oz = @wb.movies.create!(title: "The Wizard of Oz", creation_year: 1939, genre: "Musical")
     
     @jane = Actor.create!(name: "Jane Powell", age: 23)
     @vic = Actor.create!(name: "Vic Damone", age: 25)
@@ -30,10 +30,10 @@ RSpec.describe "Movie show page" do
 
   it "displays the movie's title, creation year, genre" do
     visit "/movies/#{@seven.id}"
-
+    
     expect(page).to have_content("Title: Seven Brides For Seven Brothers")
     expect(page).to have_content("Released: 1954")
-    expect(page).to have_content("Musical: Musical")
+    expect(page).to have_content("Genre: Musical")
     expect(page).to_not have_content("Title: Hit The Deck")
     expect(page).to_not have_content("Released: 1955")
     expect(page).to_not have_content("Title: The Wizard of Oz")
