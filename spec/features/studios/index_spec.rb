@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe "When a user visits the studios index", type: :feature do
-  describe "studios" do
+RSpec.describe "Studios", type: :feature do
+  describe "studios index" do
     it 'lists all studios locations and movies' do
 
       paramount = Studio.create!(name: "Paramount", location: 'Burbank, CA')
