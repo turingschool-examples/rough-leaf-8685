@@ -32,9 +32,8 @@ RSpec.describe 'movies show page', type: :feature do
   it 'shows a list of its actors from youngest to oldest and the average age of all actors' do
 
     visit "/movies/#{@sw.id}"
-
+save_and_open_page
     expect(page).to have_content("Harrison Ford")
-    expect(page).to have content("78")
     expect("Natalie Portman").to appear_before("George Lucas")
     expect("George Lucas").to appear_before("Harrison Ford")
     expect("Harrison Ford").to appear_before("Alec Guinness")

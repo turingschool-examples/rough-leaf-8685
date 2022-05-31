@@ -2,5 +2,6 @@
 <p>Created: <%= @movies.creation_year %></p>
 <p>Genre: <%= @movies.genre %></p>
 Actors in film:
-<% @movies.actors.each do |actor| %>
-<%= actor.name %>, age: <%= actor.age %>
+<% @movies.actor_by_age.each do |actor| %>
+<%= actor.name %>
+<% end %>
