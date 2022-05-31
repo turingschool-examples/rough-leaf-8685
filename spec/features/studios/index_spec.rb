@@ -12,7 +12,7 @@ RSpec.describe Studio, type: :feature do
       movie5 = studio2.movies.create!(title: "Movie5", creation_year: 2000, genre: "genre3")
     
       visit '/studios'
-        within("#studio-studio1") do
+        within("#studio-Studio1") do
           expect(page).to have_content("Studio1")
           expect(page).to have_content("Location1")
           expect(page).to have_content("Movie1")
