@@ -6,6 +6,6 @@ class Movie < ApplicationRecord
   has_many :actors, through: :actor_movies
 
   def actors_in_movie
-    actors.distinct.pluck(:name)
+    actors.pluck(:name)
   end
 end
