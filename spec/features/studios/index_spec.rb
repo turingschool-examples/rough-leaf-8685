@@ -15,14 +15,20 @@ RSpec.describe 'Studio Index Page' do
     it 'has each studios name and location' do 
       visit "/studios"
       
-      expect(page).to have_content(studio1.name)
-      expect(page).to have_content(studio1.location)
+      within "#studio-#{studio1.id}" do 
+        expect(page).to have_content(studio1.name)
+        expect(page).to have_content(studio1.location)
+      end
 
-      expect(page).to have_content(studio2.name)
-      expect(page).to have_content(studio2.location)
+      within "#studio-#{studio2.id}" do
+        expect(page).to have_content(studio2.name)
+        expect(page).to have_content(studio2.location)
+      end
 
-      expect(page).to have_content(studio3.name)
-      expect(page).to have_content(studio3.location)
+      within "#studio-#{studio3.id}" do
+        expect(page).to have_content(studio3.name)
+        expect(page).to have_content(studio3.location)
+      end 
     end
 
     xit 'has the title of each movie under the studio' do 
