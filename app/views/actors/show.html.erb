@@ -1,0 +1,11 @@
+<h1>Actor Show Page</h1>
+
+<h2>Name: <%= @actor.name %></h2>
+<h2>Age: <%= @actor.age %></h2>
+
+<div id="coactors">
+<h4>Co-Actors</h4>
+    <% @actor.find_coactors.each do |coactor| %>
+        <p><%= coactor if coactor != @actor.name %></p>
+    <% end %>
+</div>
