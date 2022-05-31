@@ -24,12 +24,18 @@ RSpec.describe 'Movie Show Page' do
 
     it 'can list the actors from youngest to oldest' do 
       visit "movies/#{movie2.id}"
-save_and_open_page
+
       expect(page).to have_content(actor1.name)
       expect(page).to have_content(actor2.name)
       expect(page).to have_content(actor3.name)
       expect("Daveigh Chase").to appear_before("Mari Natsuki")
       expect("Mari Natsuki").to appear_before("Miyu Irino")
+    end
+
+    it 'can show the average age of all the actors' do 
+      visit "movies/#{movie2.id}"
+
+      expect(page).to have_content("Average age of actors: 43.67")
     end
   end
 end
