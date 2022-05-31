@@ -15,8 +15,11 @@ RSpec.describe Movie, type: :feature do
 
       visit movie_path(movie1)
 
-      within '#info' do
+      within '#title' do
         expect(page).to have_content(movie1.title)
+      end
+
+      within '#info' do
         expect(page).to have_content(movie1.creation_year)
         expect(page).to have_content(movie1.genre)
       end
@@ -24,7 +27,8 @@ RSpec.describe Movie, type: :feature do
       within '#actors' do
         expect(actor2.name).to appear_before(actor1.name)
         expect(actor2.name).to appear_before(actor3.name)
-        expect(page).to have_content(actor3.name)
+        expect(actor3.name).to_not appear_before(actor2.name)
+        expect(page).to have_content((actor1.age + actor2.age + actor3.age) / 3)
       end
     end
   end
