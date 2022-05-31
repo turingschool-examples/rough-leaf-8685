@@ -18,8 +18,6 @@ RSpec.describe 'studios index page' do
     within("div##{marvel.id}") do
       expect('Marvel').to appear_before('Denver, CO')
       expect('Denver, CO').to appear_before('Iron Man')
-      expect(page).to have_content('Captain America')
-      expect(page).to have_content('Thor')
       expect(page).to_not have_content('Disney')
       expect(page).to_not have_content('Tampa, FL')
       expect(page).to_not have_content('Alladin')
@@ -35,8 +33,6 @@ RSpec.describe 'studios index page' do
       expect(page).to have_content('Disney')
       expect(page).to have_content('Tampa, FL')
       expect(page).to have_content('Alladin')
-      expect(page).to have_content('Pocohontas')
-      expect(page).to have_content('Tangled')
     end
   end
 end
