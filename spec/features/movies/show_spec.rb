@@ -24,7 +24,7 @@ RSpec.describe 'Movie Show Page' do
 
     it 'can list the actors from youngest to oldest' do 
       visit "movies/#{movie2.id}"
-
+save_and_open_page
       expect(page).to have_content(actor1.name)
       expect(page).to have_content(actor2.name)
       expect(page).to have_content(actor3.name)
