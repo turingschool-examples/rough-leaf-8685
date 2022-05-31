@@ -3,4 +3,19 @@ Created: <%= @movie.creation_year %><br>
 Genre: <%= @movie.genre %><br>
 
 All Actors: <%= @movie.all_actors.join(", ") %><br>
-Average Actor Age: <%= @movie.average_age %>
+Average Actor Age: <%= @movie.average_age %><br>
+
+<%= form_with url: "/movies/#{@movie.id}", method: :get, local: true do |form| %>
+  <%= form.label "Add an actor to this movie" %>
+  <%= form.text_field :actors_by_name %>
+  <%= form.submit "submit" %>
+<% end %>
+
+<% @movie_actors.each do |actor| %>
+    <%= form_with url: '/actor_movies', method: :post, local: true do |form| %>
+    <%= form.label actor.name %>
+    <%= form.hidden_field :actor_id, value: actor.id %>
+    <%= form.hidden_field :movie_id, value: @movie.id %>
+    <%= form.submit "Add actor" %>
+  <% end %>
+<% end %>
