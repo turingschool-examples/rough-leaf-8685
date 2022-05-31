@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   resources :movies, only: [:show]
 
   resources :movie_actors, only: [:create]
+
+  resources :actors, only: [:show]
 end
