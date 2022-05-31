@@ -1,5 +1,5 @@
 <% @studios.each do |studio| %>
-  <div id="studio-#{studio.id}">
+  <div id="studio-<%= studio.id %>">
     <h3><%= studio.name %></h3>
     <p>Location: <%= studio.location %></p>
     <% studio.movies.each do |movie| %>

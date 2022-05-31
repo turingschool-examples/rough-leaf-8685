@@ -8,19 +8,19 @@ RSpec.describe 'studio index page' do
 
   it "displays the studios attributes and movie titles" do
     visit studios_path
-    
-    within "#studio-#{studio1}" do
-      expect(page).to have_content('Name: Dark Castle Entertainment')
+
+    within "#studio-#{studio1.id}" do
+      expect(page).to have_content('Dark Castle Entertainment')
       expect(page).to have_content('Location: Los Angeles, CA')
-      expect(page).to_not have_content('Name: Pixar Animation')
-      expect('Rock n Rolla').to appear_after('Location: Los Angeles, CA')
+      expect(page).to_not have_content('Pixar Animation')
+      expect('Location: Los Angeles, CA').to appear_before('Rock n Rolla')
     end
 
-    within "#studio-#{studio2}" do
-      expect(page).to have_content('Name: Pixar Animation')
+    within "#studio-#{studio2.id}" do
+      expect(page).to have_content('Pixar Animation')
       expect(page).to have_content('Location: Emeryville, CA')
-      expect(page).to_not have_content('Name: Dark Castle Entertainment')
-      expect('Monsters, Inc.').to appear_after('Location: Emeryville, CA')
+      expect(page).to_not have_content('Dark Castle Entertainment')
+      expect('Location: Emeryville, CA').to appear_before('Monsters, Inc.')
     end
   end
 end
