@@ -10,15 +10,15 @@ RSpec.describe 'Studio index page', type: :feature do
 
     visit '/studios'
     within '#studio-0' do
-      expect(page).to have_contents("Universal Studios")
-      expect(page).to have_contents("Hollywood")
-      expect(page).to have_contents("Raiders of the Lost Ark")
+      expect(page).to have_content("name: #{studio1.name}")
+      expect(page).to have_content("location: #{studio1.location}")
+      expect(page).to have_content("#{movie1.title}")
 
     end
     within '#studio-1' do
-      expect(page).to have_contents("Warner Bros.")
-      expect(page).to have_contents("Los Angeles")
-      expect(page).to have_contents("The Dark Knight'")
+      expect(page).to have_content("name: #{studio2.name}")
+      expect(page).to have_content("location: #{studio2.location}")
+      expect(page).to have_content("#{movie2.title}")
     end
   end
 end
