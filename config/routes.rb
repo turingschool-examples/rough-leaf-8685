@@ -5,4 +5,6 @@ Rails.application.routes.draw do
 
   get "/movie/:movie_id", to: 'movies#show'
   post "/movie/:movie_id", to: 'actors#create'
+
+  get "/actor_movie/new", to: 'actor_movie#create'
 end
