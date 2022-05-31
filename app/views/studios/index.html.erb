@@ -2,4 +2,7 @@
 
 <% @studios.each do |studio| %>
 <p> <%= "#{studio.name}, located in #{studio.location}" %> </p>
-<% end %>
+  <%# "#{studio.movies.each do |movie|}" %>
+
+    <p><%#= "#{movie.title}" %></p>
+  <% end %>
