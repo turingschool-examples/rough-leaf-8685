@@ -31,13 +31,17 @@ RSpec.describe "actor show page" do
 
   it "displays actors name, age and list of coactors" do
     visit "actors/#{@jane.id}"
-save_and_open_page
+
     expect(page).to have_content("Jane Powell")
     expect(page).to have_content("Age: 23")
     expect(page).to have_content("Coactors:")
     expect(page).to have_content("Howard Keel")
     expect(page).to have_content("Ann Miller")
     expect(page).to have_content("Vic Damone")
+    
+    expect(page).to_not have_content("Judy Garland")
+    expect(page).to_not have_content("Ray Bolger")
+    expect(page).to_not have_content("Debbie Reynolds")
   end
 
 end
