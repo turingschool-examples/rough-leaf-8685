@@ -25,7 +25,7 @@ RSpec.describe Movie do
     end
 
     it ".all_actors" do
-      expect(@movie_1.all_actors).to eq(["Billy Bob Thorton", "Allison Brie"])
+      expect(@movie_1.all_actors_by_age).to eq(["Allison Brie", "Billy Bob Thorton"])
     end
 
     it ".average_age" do

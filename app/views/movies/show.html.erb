@@ -2,7 +2,7 @@ Title: <%= @movie.title %><br>
 Created: <%= @movie.creation_year %><br>
 Genre: <%= @movie.genre %><br>
 
-All Actors: <%= @movie.all_actors.join(", ") %><br>
+All Actors: <%= @movie.all_actors_by_age.join(", ") %><br>
 Average Actor Age: <%= @movie.average_age %><br>
 
 <%= form_with url: "/movies/#{@movie.id}", method: :get, local: true do |form| %>
