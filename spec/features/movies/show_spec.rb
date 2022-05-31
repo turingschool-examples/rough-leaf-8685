@@ -29,7 +29,7 @@ describe 'movie show page' do
       expect(page).to_not have_content("Thor")
       expect(page).to_not have_content("Iron Man")
       expect(page).to have_content(2021)
-      expect(page).to have_content("action")
+      expect(page).to have_content("Action")
     end
 
     visit "/movies/#{@iron.id}"
@@ -39,7 +39,7 @@ describe 'movie show page' do
       expect(page).to_not have_content("Spider-Man")
       expect(page).to_not have_content("Thor")
       expect(page).to have_content(2013)
-      expect(page).to have_content("action")
+      expect(page).to have_content("Action")
     end
   end
 
@@ -71,6 +71,26 @@ describe 'movie show page' do
     within "#actor-stats" do
       expect(page).to have_content("Average Actor Age: 44 years old")
     end
+  end
+
+  it 'can add an actor the the movie by name' do
+    visit "/movies/#{@spider.id}"
+    
+    within "#movie-actors" do
+      expect(page).to_not have_content("Gwyneth Paltrow")
+    end
+
+    within '#add-actor' do
+      fill_in "Actor Name", with: "Gwyneth Paltrow"
+      click_button "Add Actor to Movie"
+    end
+
+    expect(current_path).to eq("/movies/#{@spider.id}")
+
+    within "#movie-actors" do
+      expect(page).to have_content("Gwyneth Paltrow")
+    end
+
   end
 
 end
