@@ -108,11 +108,10 @@ RSpec.describe 'movies show page' do
       expect(page).to_not have_content('Chris Hemsworth')
     end
 
-    fill_in 'Actor Name', with: 'John Newman'
+    fill_in :name, with: 'John Newman'
 
     click_on('Submit')
     expect(current_path).to eq("/movies/#{iron_man.id}")
-
     within('div#actors') do
       expect('James Cameron').to appear_before('Sarah Jessica Parker')
       expect('Sarah Jessica Parker').to appear_before('Robert Downey Jr.')
