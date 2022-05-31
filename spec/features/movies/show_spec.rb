@@ -19,7 +19,7 @@ RSpec.describe 'the movie show page', type: :feature do
     expect(page).to_not have_content("True Romance")
   end
 
-  it 'lists all actors in each movie oldest to youngest' do
+  it 'lists all actors in each movie youngest to oldest' do
     warner_bros = Studio.create!(name: "Warner Brothers", location: "Los Angeles")
     jurassic = warner_bros.movies.create!(title: "Jurassic Park", creation_year: 1993, genre: "Sci-Fi")
     true_romance = warner_bros.movies.create!(title: "True Romance", creation_year: 1995, genre: "Romance")
