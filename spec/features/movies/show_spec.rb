@@ -17,7 +17,7 @@ RSpec.describe 'Movie Show Page' do
   let!(:movie_actor1) { MovieActor.create!(actor_id: actor1.id, movie_id: movie2.id)}
   let!(:movie_actor2) { MovieActor.create!(actor_id: actor2.id, movie_id: movie2.id)}
   let!(:movie_actor3) { MovieActor.create!(actor_id: actor3.id, movie_id: movie2.id)}
-  let!(:movie_actor5) { MovieActor.create!(actor_id: actor5.id, movie_id: movie2.id)}
+  # let!(:movie_actor5) { MovieActor.create!(actor_id: actor5.id, movie_id: movie2.id)}
   let!(:movie_actor4) { MovieActor.create!(actor_id: actor4.id, movie_id: movie4.id)}
 
 
@@ -45,7 +45,7 @@ RSpec.describe 'Movie Show Page' do
     it 'can show the average age of all the actors' do 
       visit "movies/#{movie2.id}"
 
-      expect(page).to have_content("Average age of actors: 52.5")
+      expect(page).to have_content("Average age of actors: 43.67")
     end
   end
 
@@ -53,10 +53,10 @@ RSpec.describe 'Movie Show Page' do
     it 'has a form to add an actor to the movie' do 
       visit "movies/#{movie2.id}"
 
-      expect(page).to_not have_content("Jim Carrey")
+      expect(page).to_not have_content("Suzanne Pleshette")
       expect(page).to have_content("Add an Actor")
 
-      fill_in(:name, with: "Suzanne Pleshette")
+      fill_in :actor_name, with: "Suzanne Pleshette"
       click_on('Submit')
 
       expect(current_path).to eq("/movies/#{movie2.id}")

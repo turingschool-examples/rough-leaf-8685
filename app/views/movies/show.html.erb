@@ -9,7 +9,7 @@
 
 <h3>Add an Actor</h3>
 <%= form_with url: "/movies/#{@movie.id}/actors", method: :post, local: true do |f| %>
-  <p><%= f.label :name %></p>
-  <p><%= f.text_field :name %>
+  <p><%= f.label :actor_name %></p>
+  <p><%= f.text_field :actor_name %>
   <p><%= f.submit 'Submit' %></p>
 <% end %>
