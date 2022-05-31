@@ -4,5 +4,7 @@ Rails.application.routes.draw do
 
   resources :movies, only: [:show]
 
+  resources :actors, only: [:show]
+
   post "/movies/:movie_id", to: "actor_movies#create"
 end

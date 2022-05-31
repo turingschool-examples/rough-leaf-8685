@@ -18,7 +18,7 @@ RSpec.describe "Actors Show View", type: :feature do
     # I see that actors name and age
     # And I see a unique list of all of the actors this particular actor has worked with.
 
-    it "shows the actor's attributes and a list of actors they have worked with" do
+    xit "shows the actor's attributes and a list of actors they have worked with" do
       visit "/actors/#{marty.id}"
 
       expect(page).to have_content("Michael J. Fox")

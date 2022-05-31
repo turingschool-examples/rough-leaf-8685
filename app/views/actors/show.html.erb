@@ -1,0 +1,8 @@
+<p><%= @actor.name %></p>
+<p>Age: <%= @actor.age %></p>
+<br>
+
+<p>People they've acted with:</p>
+<% @actor.coactors.each do |coactor| %>
+  <p><%= coactor.name %></p>
+<% end %>
