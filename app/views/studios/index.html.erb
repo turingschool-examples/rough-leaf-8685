@@ -1,0 +1,7 @@
+<h2>Studios: <% @studios.each do |studio| %></h2>
+<p> Name: <%= studio.name %> </p>
+<p> Location: <%=studio.location%> </p>
+<h3> Movies at this Studio: </h3>
+<p> <% studio.movies.each do |movie| %></p>
+<p> <%= movie.title %></p>
+<% end %> <% end %>
