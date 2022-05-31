@@ -17,10 +17,7 @@ RSpec.describe Studio, type: :feature do
       movie_3 = studio_2.movies.create!(title: "Toy Story", creation_year: 1994, genre: "Family")
       movie_4 = studio_2.movies.create!(title: "Wall-E", creation_year: 2009, genre: "Family")
 
-      # binding.pry
-
       visit "/studios/"
-      # save_and_open_page
 
       within "#studio-#{studio_1.id}" do
         expect(page).to have_content(studio_1.name)
@@ -45,7 +42,6 @@ RSpec.describe Studio, type: :feature do
         expect(page).to have_content(movie_3.title)
         expect(page).to have_content(movie_4.title)
       end
-
     end
   end
 end

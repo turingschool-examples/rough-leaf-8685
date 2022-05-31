@@ -19,6 +19,7 @@ RSpec.describe Actor, type: :feature do
       actor_4 = Actor.create!(name: "Kate Capshaw", age: 62)
       actor_5 = Actor.create!(name: "Amrish Puri", age: 65)
       actor_6 = Actor.create!(name: "George Lucas", age: 75)
+      actor_7 = Actor.create!(name: "Tom Hanks", age: 61)
 
       ActorMovie.create!(actor_id: actor_1.id, movie_id: movie_1.id)
       ActorMovie.create!(actor_id: actor_2.id, movie_id: movie_1.id)
@@ -30,12 +31,8 @@ RSpec.describe Actor, type: :feature do
       ActorMovie.create!(actor_id: actor_5.id, movie_id: movie_2.id)
       ActorMovie.create!(actor_id: actor_6.id, movie_id: movie_2.id)
 
-      # binding.pry
-
       visit "/actors/#{actor_1.id}"
 
-      # save_and_open_page
-      #
       expect(page).to have_content(actor_1.name)
       expect(page).to have_content(actor_1.age)
       expect(page).to have_content("Unique CoWorkers: #{actor_1.unique_coworkers}" )

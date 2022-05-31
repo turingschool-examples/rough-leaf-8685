@@ -28,12 +28,8 @@ RSpec.describe Movie, type: :feature do
       ActorMovie.create!(actor_id: actor_4.id, movie_id: movie_2.id)
       ActorMovie.create!(actor_id: actor_5.id, movie_id: movie_2.id)
 
-      # binding.pry
-
       visit "/movies/#{movie_1.id}"
 
-      # save_and_open_page
-      #
       expect(page).to have_content(movie_1.title)
       expect(page).to have_content(movie_1.creation_year)
       expect(page).to have_content(movie_1.genre)
