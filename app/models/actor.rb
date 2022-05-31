@@ -11,4 +11,10 @@ class Actor < ApplicationRecord
   def self.average_age
     average(:age)
   end
+
+  def coactors
+    movies.flat_map {|movie| movie.actors.distinct.pluck(:name)}
+  end
+#haha well...I could not figure out how to do this with active record in time
+
 end
