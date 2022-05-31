@@ -18,4 +18,23 @@ RSpec.describe 'the movie show page', type: :feature do
     expect(page).to have_content("Sci-Fi")
     expect(page).to_not have_content("True Romance")
   end
+
+  it 'lists all actors in each movie oldest to youngest' do
+    warner_bros = Studio.create!(name: "Warner Brothers", location: "Los Angeles")
+    jurassic = warner_bros.movies.create!(title: "Jurassic Park", creation_year: 1993, genre: "Sci-Fi")
+    true_romance = warner_bros.movies.create!(title: "True Romance", creation_year: 1995, genre: "Romance")
+
+    sam = Actor.create!(name: "Sam Neill", age: 70)
+    laura = Actor.create!(name: "Laura Dern", age: 55)
+    harrison = Actor.create!(name: "Harrison Ford", age: 78)
+
+    MovieActor.create!(movie: jurassic, actor: sam)
+    MovieActor.create!(movie: jurassic, actor: laura)
+    MovieActor.create!(movie: true_romance, actor: harrison)
+
+    visit "/movies/#{jurassic.id}"
+    expect(page).to have_content("Sam Neill")
+    expect(page).to have_content("Laura Dern")
+    expect(page).to_not have_content("Harrison Ford")
+  end
 end
