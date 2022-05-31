@@ -20,7 +20,7 @@ RSpec.describe Studio, type: :feature do
       # binding.pry
 
       visit "/studios/"
-      save_and_open_page
+      # save_and_open_page
 
       within "#studio-#{studio_1.id}" do
         expect(page).to have_content(studio_1.name)
