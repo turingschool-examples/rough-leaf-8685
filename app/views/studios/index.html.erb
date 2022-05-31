@@ -1,0 +1,8 @@
+<h1>All Studios</h1>
+
+<% @studios.each do |studio| %>
+  <div id="studio-<%= studio.id %>">
+    <%= studio.name %><%= studio.location %><br>
+    <%= studio.movie_titles.join(", ") %>
+  </div>
+<% end %>
