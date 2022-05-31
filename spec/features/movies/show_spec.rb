@@ -10,16 +10,30 @@ RSpec.describe 'Movies Show Page' do
     @luke = @sw.actors.create!(name: "Mark Hamill", age: 53)
     @han = @sw.actors.create!(name: "Harrison Ford", age: 62)
     @leia = @sw.actors.create!(name: "Carrie Fisher", age: 58)
+    @dory = @nemo.actors.create!(name: "Dorthy", age: 89432)
+    @r2 = Actor.create!(name: "R2D2", age: 439)
   end
 
   it 'displays the movies title, creation year, genre, a list of actors from youngest to oldest and an average ag of the movies actors' do
     visit "movies/#{@sw.id}"
-save_and_open_page
     expect(page).to have_content("Star Wars")
     expect(page).to have_content(1984)
     expect(page).to have_content("Sci-fi")
     expect("Mark Hamill").to appear_before("Carrie Fisher")
     expect("Carrie Fisher").to appear_before("Harrison Ford")
     expect(page).to have_content("Average age amoungst actors: 58")
+    expect(page).to_not have_content("Dory")
+  end
+
+  it 'can add an actor' do
+    visit "/movies/#{@sw.id}"
+
+    within "#new_actor" do
+      fill_in("Name", with: "R2D2")
+      click_button "Submit"
+    end
+
+    expect(current_path).to eq("/movies/#{@sw.id}")
+    expect(page).to have_content(R2D2)
   end
 end
