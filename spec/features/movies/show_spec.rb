@@ -79,11 +79,11 @@ RSpec.describe "Movie show page" do
     visit "/movies/#{@deck.id}"
 
     expect(page).to have_content("Average age: 27.67")
-    expect(page).to_not have_content("Average age: 26.50")
+    expect(page).to_not have_content("Average age: 26.5")
     
     visit "/movies/#{@seven.id}"
     
-    expect(page).to have_content("Average age: 26.50")
+    expect(page).to have_content("Average age: 26.5")
     expect(page).to_not have_content("Average age: 27.67")
   end
 end
