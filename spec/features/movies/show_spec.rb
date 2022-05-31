@@ -75,5 +75,8 @@ RSpec.describe 'movies show page' do
       expect('Sarah Jessica Parker').to appear_before('Robert Downey Jr.')
       expect(page).to_not have_content('Chris Hemsworth')
     end
+
+    expect(page).to have_content('Average Age of Actors:')
+    expect(page).to have_content(44)
   end
 end
