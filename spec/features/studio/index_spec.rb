@@ -18,18 +18,30 @@ RSpec.describe 'Studio Index Page' do
             expect(page).to have_content("Location: Los Angeles")
             expect(page).to have_content("NWA")
             expect(page).to have_content("Dark Souls")
+            expect(page).to_not have_content("Name: Ocean Pictures")
+            expect(page).to_not have_content("Location: Miami")
+            expect(page).to_not have_content("Toy Story")
+            expect(page).to_not have_content("Narwhal Adventures")
         end
         within "#studio-#{studio_2.id}" do
             expect(page).to have_content("Name: Ocean Pictures")
             expect(page).to have_content("Location: Miami")
             expect(page).to have_content("Toy Story")
             expect(page).to have_content("Narwhal Adventures")
+            expect(page).to_not have_content("Name: Disney")
+            expect(page).to_not have_content("Location: Orlando")
+            expect(page).to_not have_content("Princess Joker")
+            expect(page).to_not have_content("LaLaLa")
         end
         within "#studio-#{studio_3.id}" do
             expect(page).to have_content("Name: Disney")
             expect(page).to have_content("Location: Orlando")
             expect(page).to have_content("Princess Joker")
             expect(page).to have_content("LaLaLa")
+            expect(page).to_not have_content("Name: G Studios")
+            expect(page).to_not have_content("Location: Los Angeles")
+            expect(page).to_not have_content("NWA")
+            expect(page).to_not have_content("Dark Souls")
         end
     end
     
