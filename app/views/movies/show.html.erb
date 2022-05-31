@@ -1,0 +1,28 @@
+<h1 id="title"><%= @movie.title %></h1>
+
+<div id="info">
+  <p>Creation Year:
+    <%= @movie.creation_year %></p>
+  <p>Genre:
+    <%= @movie.genre %></p>
+</div>
+
+<h3>Actors:</h3>
+<div id="actors">
+  <% @movie.age_sorted_actors.each do |actor| %>
+    <p>
+      <%= actor.name %>
+      <%= actor.age %>
+    </p>
+  <% end %>
+  <p>Average Age:
+    <%= @movie.actors_average_age %></p>
+</div>
+
+<h3>Add Actor</h3>
+<%= form_with url: "/movie_actors", method: :post, local: true do |form| %>
+<%= form.label "Name:" %>
+<%= form.text_field :actor_name %>
+<%= form.hidden_field :movie_id, value:@movie.id %>
+<%= form.submit "submit" %>
+<% end %>

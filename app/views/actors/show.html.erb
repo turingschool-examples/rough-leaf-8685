@@ -1,0 +1,12 @@
+<div id="info">
+  <h1><%= @actor.name %></h1>
+  <p>Age:
+    <%= @actor.age %></p>
+</div>
+
+<h2>Co-Actors:</h2>
+<div id="coactors">
+  <% @actor.coactors.each do |coactor| %>
+    <p><%= coactor %></p>
+  <% end %>
+</div>
