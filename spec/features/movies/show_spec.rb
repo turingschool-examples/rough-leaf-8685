@@ -5,7 +5,7 @@ RSpec.describe "Movie Show" do
     @studio_1 = Studio.create!(name: "Universal Studios", location: "Hollywood")
 
     @movie_1 = @studio_1.movies.create!(title: "Cool Movie", creation_year: 1986, genre: "Superhero")
-    @movie_2 = @studio_2.movies.create!(title: "Bad Movie", creation_year: 1988, genre: "Horror")
+    @movie_2 = @studio_1.movies.create!(title: "Bad Movie", creation_year: 1988, genre: "Horror")
 
     @actor_1 = Actor.create!(name: "Billy Bob Thorton", age: 69)
     @actor_2 = Actor.create!(name: "Allison Brie", age: 44)
