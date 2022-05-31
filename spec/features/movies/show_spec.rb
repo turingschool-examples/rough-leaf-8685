@@ -32,7 +32,7 @@ RSpec.describe Movie, type: :feature do
       end
     end
 
-    it 'be able to add existing actors via form' do
+    it 'be able to add existing actors via form and recieve a message of success or failure' do
       studio1 = Studio.create!(name: 'Paramount', location: 'Hollywood')
       movie1 = Movie.create!(title: 'Raiders of the Lost Ark', creation_year: 1981, genre: 'Action/Adventure',
                              studio_id: studio1.id)
@@ -61,12 +61,25 @@ RSpec.describe Movie, type: :feature do
 
       expect(current_path).to eq(movie_path(movie1))
 
+      within '#message' do
+        expect(page).to have_content('Actor successfully added!')
+      end
+
       within '#actors' do
         expect(actor2.name).to appear_before(actor1.name)
         expect(actor2.name).to appear_before(actor3.name)
         expect(actor3.name).to_not appear_before(actor2.name)
         expect(page).to have_content(actor4.name)
         expect(page).to_not have_content(actor5.name)
+      end
+
+      fill_in 'actor_name', with: 'Not a real actor'
+      click_on 'submit'
+
+      expect(current_path).to eq(movie_path(movie1))
+
+      within '#message' do
+        expect(page).to have_content("That doesn't seem to be a real actor...")
       end
     end
   end
