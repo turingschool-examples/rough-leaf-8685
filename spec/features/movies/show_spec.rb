@@ -10,6 +10,8 @@ RSpec.describe 'movie show page', type: :feature do
     actor1 = Actor.create!(name: "Harrison Ford", age: 78)
     actor2 = Actor.create!(name: "Christian Bale", age: 48)
     actor3 = Actor.create!(name: "Michael Caine", age: 89)
+    MovieActor.create!(movie1.id, actor2.id)
+    MovieActor.create!(movie1.id, actor3.id)
 
     visit "/movies/#{movie2.id}"
 
