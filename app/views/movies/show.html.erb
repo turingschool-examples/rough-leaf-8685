@@ -4,3 +4,4 @@
 <p><% @movie.actors.order_by_age.each do |actor| %></p>
   <%= actor.name %>
 <% end %>
+<p>Average age of actors: <%= @movie.actors.average_age.round(2) %></p>
