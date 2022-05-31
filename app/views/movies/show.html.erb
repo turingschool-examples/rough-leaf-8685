@@ -1,3 +1,6 @@
 <p>Title: <%= @movie.title %></p>
 <p>Creation Year: <%= @movie.creation_year %></p>
 <p>Genre: <%= @movie.genre %></p>
+
+<%= Actor.order_by_age %>
+<%= Actor.average_age %>
