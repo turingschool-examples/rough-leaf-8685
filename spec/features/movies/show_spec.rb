@@ -13,5 +13,13 @@ RSpec.describe 'movies show page' do
     expect(page).to have_content('Iron Man')
     expect(page).to have_content('2008')
     expect(page).to have_content('Action')
+
+    it 'shows actors in order of youngest to oldest' do
+      marvel = Studio.create!(name: 'Marvel', location: 'Denver, CO')
+
+      iron_man = marvel.movies.create!(title: 'Iron Man', creation_year: '2008', genre: 'Action')
+      captain_america = marvel.movies.create!(title: 'Captain America', creation_year: '2010', genre: 'Action')
+      thor = marvel.movies.create!(title: 'Thor', creation_year: '2011', genre: 'Action')
+    end
   end
 end
