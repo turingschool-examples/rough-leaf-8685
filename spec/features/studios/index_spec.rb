@@ -12,7 +12,7 @@ RSpec.describe "Studio index page" do
     oz = wb.movies.create!(title: "The Wizard of Oz", creation_year: 1939, genre: "musical")
     
     visit "/studios"
-
+    
     within("#studio-0") do
       expect(page).to have_content("Studio: Metro Goldwyn Mayer")
       expect(page).to have_content("Location: Hollywood")
