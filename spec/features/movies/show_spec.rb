@@ -9,11 +9,14 @@ RSpec.describe 'Movie Show Page' do
   let!(:actor2) { Actor.create!(name: 'Miyu Irino', age: 51)}
   let!(:actor3) { Actor.create!(name: 'Mari Natsuki', age: 48)}
   let!(:actor4) { Actor.create!(name: 'Jim Carrey', age: 60)}
+  let!(:actor5) { Actor.create!(name: 'Suzanne Pleshette', age: 79)}
 
 
   let!(:movie_actor1) { MovieActor.create!(actor_id: actor1.id, movie_id: movie2.id)}
   let!(:movie_actor2) { MovieActor.create!(actor_id: actor2.id, movie_id: movie2.id)}
   let!(:movie_actor3) { MovieActor.create!(actor_id: actor3.id, movie_id: movie2.id)}
+  let!(:movie_actor4) { MovieActor.create!(actor_id: actor5.id, movie_id: movie2.id)}
+
 
   describe 'user story 2' do 
     it 'has movie attributes' do 
@@ -37,7 +40,7 @@ RSpec.describe 'Movie Show Page' do
     it 'can show the average age of all the actors' do 
       visit "movies/#{movie2.id}"
 
-      expect(page).to have_content("Average age of actors: 43.67")
+      expect(page).to have_content("Average age of actors: 52.5")
     end
   end
 
@@ -53,7 +56,7 @@ RSpec.describe 'Movie Show Page' do
 
       expect(current_path).to eq("/movies/#{movie2.id}")
       save_and_open_page
-      
+
       expect(page).to have_content("Suzanne Pleshette")
     end
   end
