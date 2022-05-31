@@ -19,13 +19,14 @@ RSpec.describe 'studio index', type: :feature do
   end
 
   it "displays all studios and their movies" do
-    visit "/movies"
+    visit "/studios"
 
     expect(page).to have_content(@studio1.name)
     expect(page).to have_content(@studio2.name)
     expect(page).to have_content(@studio3.name)
     expect(page).to have_content(@studio4.name)
-    within "#studio-#{@studio1.id}" do
+    within "#studio-0" do
+        save_and_open_page
       expect(page).to_not have_content("MGM Movie")
       expect(page).to have_content("Universal Movie")
     end
