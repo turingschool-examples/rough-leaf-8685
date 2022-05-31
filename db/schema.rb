@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2022_05_31_151509) do
   enable_extension "plpgsql"
 
   create_table "actor_movies", force: :cascade do |t|
-    t.bigint "movie_id"
+    t.bigint "movie_id" 
     t.bigint "actor_id"
     t.index ["actor_id"], name: "index_actor_movies_on_actor_id"
     t.index ["movie_id"], name: "index_actor_movies_on_movie_id"
