@@ -20,7 +20,7 @@ RSpec.describe "Actors Show" do
     expect(page).to_not have_content("Age: 44")
   end
 
-  it "shows unique coactors" do
+  xit "shows unique coactors" do
     studio_1 = Studio.create!(name: "Universal Studios", location: "Hollywood")
 
     movie_1 = studio_1.movies.create!(title: "Cool Movie", creation_year: 1986, genre: "Superhero")
@@ -34,7 +34,7 @@ RSpec.describe "Actors Show" do
 
     visit "/actors/#{actor_1.id}"
 
-    expect(page).to have_content("Allison Brie")
+    expect(page).to have_content("Coactors: Allison Brie")
     expect(page).to_not have_content("John Belushi")
   end
 end
