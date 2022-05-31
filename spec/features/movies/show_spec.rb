@@ -74,4 +74,16 @@ RSpec.describe "Movie show page" do
     expect(page).to_not have_content("Judy Garland")
     expect(page).to_not have_content("Howard Keel")
   end
+
+  it "displays average age of all actors in the movie" do 
+    visit "/movies/#{@deck.id}"
+
+    expect(page).to have_content("Average age: 27.67")
+    expect(page).to_not have_content("Average age: 26.50")
+    
+    visit "/movies/#{@seven.id}"
+    
+    expect(page).to have_content("Average age: 26.50")
+    expect(page).to_not have_content("Average age: 27.67")
+  end
 end
