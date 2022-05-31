@@ -16,7 +16,7 @@ RSpec.describe 'Movie Show Page' do
 
     connection1 = ActorMovie.create!(actor_id: @jimbob.id, movie_id: @fishing.id)
     connection2 = ActorMovie.create!(actor_id: @jimbob.id, movie_id: @gocarts.id)
-    connection3 = ActorMovie.create!(actor_id: @alice.id, movie_id: @et.id)
+    connection3 = ActorMovie.create!(actor_id: @alice.id, movie_id: @ark.id)
     connection4 = ActorMovie.create!(actor_id: @pete.id, movie_id: @gocarts.id)
     connection5 = ActorMovie.create!(actor_id: @pete.id, movie_id: @fishing.id)
     connection6 = ActorMovie.create!(actor_id: @sam.id, movie_id: @gocarts.id)
@@ -44,11 +44,22 @@ RSpec.describe 'Movie Show Page' do
     expect(page).to have_content(@pete.name)
     expect(page).to have_content(@sam.name)
     expect(page).to have_content(@jimbob.name)
+    expect(page).to_not have_content(@alice.name)
 
     within '#actorList' do
       expect(page.all('.actors')[0]).to have_content(@sam.name)
       expect(page.all('.actors')[1]).to have_content(@pete.name)
       expect(page.all('.actors')[2]).to have_content(@jimbob.name)
     end
+  end
+
+  it 'can show the average age of actors in a movie' do
+    visit "/movies/#{@gocarts.id}"
+
+    expect(page).to have_content("Average Age of Cast: 41.67")
+
+    visit "/movies/#{@fishing.id}"
+
+    expect(page).to have_content("Average Age of Cast: 48.5")
   end
 end
