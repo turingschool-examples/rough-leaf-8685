@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'movies show page' do
-  it 'shows the movie title, creation year, and genre' do
+  xit 'shows the movie title, creation year, and genre' do
     marvel = Studio.create!(name: 'Marvel', location: 'Denver, CO')
 
     iron_man = marvel.movies.create!(title: 'Iron Man', creation_year: '2008', genre: 'Action')
