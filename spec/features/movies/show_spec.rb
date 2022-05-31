@@ -16,9 +16,10 @@ RSpec.describe Movie, type: :feature do
       actor_movie4 = ActorMovie.create!(actor_id: actor4.id, movie_id: movie2.id)
 
       visit "/movies/#{movie1.id}"
-      
+      save_and_open_page
+
       expect(page).to have_content("Movie1")
-      expect(page).to have_content("1970")
+      expect(page).to have_content("1960")
       expect(page).to have_content("genre1")
       expect(page).to_not have_content("Movie2")
     end
@@ -35,11 +36,11 @@ RSpec.describe Movie, type: :feature do
 
       
       visit "/movies/#{movie1.id}"
-        within("#Actors") do
-          expect(actor1).to appear_before(actor3)
-          expect(actor3).to appear_before(actor2)
-          expect(actor2).to_not appear_before(actor1)
-        end
+        # within("#Actors") do
+          expect("YoungActor").to appear_before("MiddleActor")
+          expect("MiddleActor").to appear_before("OldActor")
+          expect("OldActor").to_not appear_before("YoungActor")
+        # end
     end
 
     it "displays the average age of its actors" do
@@ -55,7 +56,7 @@ RSpec.describe Movie, type: :feature do
       
       visit "/movies/#{movie1.id}"
         within("#Average") do
-          expect(page).to have_content("Average age of actors: 50")
+          expect(page).to have_content("Average age of all actors: 50.0")
         end
     end
   end
