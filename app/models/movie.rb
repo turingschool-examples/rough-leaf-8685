@@ -11,4 +11,3 @@ class Movie < ApplicationRecord
     actors.average(:age).to_f
   end
 end
-
