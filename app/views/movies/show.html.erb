@@ -5,3 +5,10 @@
 <%= actor.name %></br>
 <%end%>
 Average Age: <%= @movie.actors.average_age.round(2) %>
+
+<%= form_with url: "/movies/#{@movie.id}/movie_actors", method: :post do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.submit 'submit' %>
+<% end %>
+
