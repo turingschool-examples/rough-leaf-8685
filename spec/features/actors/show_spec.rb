@@ -33,8 +33,10 @@ describe 'actor show page' do
   end
 
   it 'lists this actors co-actors' do
-  visit "/actors/#{@tom.id}"
+    ActorMovie.create!(movie: @thor, actor: @chris)
+    ActorMovie.create!(movie: @thor, actor: @tom)
 
+    visit "/actors/#{@tom.id}"
     within "#co-actors" do
       expect(page).to have_content("Robert Downey Jr")
       expect(page).to have_content("Chris Hemsworth")

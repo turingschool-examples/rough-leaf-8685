@@ -13,8 +13,8 @@ class Actor < ApplicationRecord
   end
 
   def coactors
-    movies.flat_map {|movie| movie.actors_in_movie}
+    movies.flat_map {|movie| movie.actors_in_movie}.uniq
   end
-#haha well...I could not figure out how to do this with active record in time
+# haha well...I could not figure out how to do this with active record in time
 
 end
