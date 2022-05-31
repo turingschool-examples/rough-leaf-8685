@@ -54,7 +54,7 @@ RSpec.describe Movie, type: :feature do
 
       
       visit "/movies/#{movie1.id}"
-        within("#Aveage") do
+        within("#Average") do
           expect(page).to have_content("Average age of actors: 50")
         end
     end
