@@ -7,9 +7,9 @@ RSpec.describe 'Studio Index Page' do
   let!(:studio3) { Studio.create(name: 'Paramount Pictures Studios', location: 'Hollywood') }
 
   let!(:movie1) { studio1.movies.create(title: '9', creation_year: 200, genre: 'Thriller') }
-  let!(:movie1) { studio2.movies.create(title: 'Spirited Away', creation_year: 2002, genre: 'Drama') }
-  let!(:movie1) { studio2.movies.create(title: 'Howls Moving Castle', creation_year: 2004, genre: 'Action/Adventure') }  
-  let!(:movie1) { studio3.movies.create(title: 'Sonic the Hedgehog', creation_year: 2020, genre: 'Action/Adventure') }
+  let!(:movie2) { studio2.movies.create(title: 'Spirited Away', creation_year: 2002, genre: 'Drama') }
+  let!(:movie3) { studio2.movies.create(title: 'Howls Moving Castle', creation_year: 2004, genre: 'Action/Adventure') }  
+  let!(:movie4) { studio3.movies.create(title: 'Sonic the Hedgehog', creation_year: 2020, genre: 'Action/Adventure') }
 
   describe 'user story 1' do 
     it 'has each studios name and location' do 
@@ -31,8 +31,24 @@ RSpec.describe 'Studio Index Page' do
       end 
     end
 
-    xit 'has the title of each movie under the studio' do 
+    it 'has the title of each movie under the studio' do 
+      visit 'studios'
 
+      within "#studio-#{studio1.id}" do 
+        expect(page).to have_content(movie1.title)
+        expect(page).to_not have_content(movie2.title)
+      end
+
+      within "#studio-#{studio2.id}" do
+        expect(page).to have_content(movie2.title)
+        expect(page).to have_content(movie3.title)
+        expect(page).to_not have_content(movie4.title)
+      end
+
+      within "#studio-#{studio3.id}" do
+        expect(page).to have_content(movie4.title)
+        expect(page).to_not have_content(movie1.title)
+      end 
     end
   end
 end
