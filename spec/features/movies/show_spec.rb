@@ -91,7 +91,6 @@ RSpec.describe "Movies Show View", type: :feature do
       expect(page).to have_content(doc.name)
       expect(page).to have_content(biff.name)
       expect(page).to_not have_content(indy.name)
-
     end
 
   end
