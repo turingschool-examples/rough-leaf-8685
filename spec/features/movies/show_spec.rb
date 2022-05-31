@@ -87,7 +87,7 @@ RSpec.describe Movie, type: :feature do
 
 
       fill_in 'Name', with: "Paul Freeman"
-      fill_in 'Id', with: "#{actor_3.id}"
+
       click_button 'Add Actor to Movie'
 
       expect(page).to have_content(actor_3.name)
