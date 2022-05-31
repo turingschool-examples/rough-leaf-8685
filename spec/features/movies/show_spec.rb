@@ -57,10 +57,9 @@ RSpec.describe 'movie show page', type: :feature do
 
     it 'can add actors to a movie' do
         visit "/movies/#{@movie1.id}"
-        fill_in "Name", with: "Bob Odenkirk"
-        fill_in "Age", with: 59
+        fill_in "Name", with: "Harrison Ford"
         click_button "Submit"
         expect(current_path).to eq("/movies/#{@movie1.id}")
-        expect(page).to have_content("Bob Odenkirk")
+        expect(page).to have_content("Harrison Ford")
     end
 end

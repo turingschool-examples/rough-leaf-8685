@@ -10,4 +10,8 @@ class Movie < ApplicationRecord
   def actors_average_age
     self.actors.average(:age)
   end
+
+  def has_actors?
+    !self.actors.empty?
+  end
 end

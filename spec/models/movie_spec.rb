@@ -43,4 +43,13 @@ RSpec.describe Movie do
         expect(@movie8.actors_average_age).to eq(73.75)
     end
   end
+
+  describe '#has_actors?' do
+    it 'should return false if there are no actors on movie' do
+        @studio4 = Studio.create!(name: "Warner Brothers", location: "Burbank")
+        @movie8 = @studio4.movies.create(title: "Another Warner Brothers Movie", creation_year: 2011, genre: "Romantic Comedy")
+
+        expect(@movie8.has_actors?).to eq(false)
+    end
+  end
 end
