@@ -59,5 +59,25 @@ RSpec.describe Movie, type: :feature do
           expect(page).to have_content("Average age of all actors: 50.0")
         end
     end
+
+    it "has a form to add actors from db to movie" do
+      studio1 = Studio.create!(name: "Studio1", location: "Location1")
+      movie1 = studio1.movies.create!(title: "Movie1", creation_year: 1960, genre: "genre1")
+      actor1 = Actor.create!(name: "YoungActor", age: 20)
+      actor2 = Actor.create!(name: "OldActor", age: 80)
+      actor3 = Actor.create!(name: "MiddleActor", age: 50)
+      actor_movie1 = ActorMovie.create!(actor_id: actor1.id, movie_id: movie1.id)
+      actor_movie2 = ActorMovie.create!(actor_id: actor2.id, movie_id: movie1.id)
+
+      visit "/movies/#{movie1.id}"
+
+        expect(page).to_not have_content("MiddleActor")
+      
+          fill_in "actors_name", with: "MiddleActor"
+          click_on "submit"
+        
+        expect(current_path).to eq("/movies/#{movie1.id}")
+        expect(page).to have_content("MiddleActor")
+    end
   end
 end
