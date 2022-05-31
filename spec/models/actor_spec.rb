@@ -30,6 +30,7 @@ RSpec.describe Actor, type: :model do
             ActorMovie.create!(actor: @vic, movie: @deck)
             ActorMovie.create!(actor: @ann, movie: @deck)
             ActorMovie.create!(actor: @howard, movie: @seven)
+            ActorMovie.create!(actor: @howard, movie: @deck)
             ActorMovie.create!(actor: @judy, movie: @oz)
             ActorMovie.create!(actor: @ray, movie: @oz)
             ActorMovie.create!(actor: @ray, movie: @melody)
@@ -41,6 +42,7 @@ RSpec.describe Actor, type: :model do
                 expect(@jane.coactors).to eq([@vic, @ann, @howard])
                 expect(@ray.coactors).to eq([@judy])
             end
+            
         end
     end
 
