@@ -36,7 +36,7 @@ RSpec.describe 'movie show page' do
     expect(page).to have_content(actor1.name)
     expect(page).to have_content(actor2.name)
     expect(page).to have_content("50")
-    expect(actor2).to appear_before(actor1)
+    expect(actor2.name).to appear_before(actor1.name)
     expect(page).to_not have_content(actor3.name)
   end
 end
