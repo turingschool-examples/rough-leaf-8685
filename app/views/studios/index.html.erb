@@ -1,0 +1,9 @@
+<h1>Studio Index</h1>
+<% @studios.each_with_index do |studio, index| %>
+    <div id="studio-<%= index %>">
+        <%= studio.name %>
+        <ul><% studio.movies.each do |movie| %>
+            <li><%= link_to movie.title, "/movies/#{movie.id}" %></li>
+            <% end %></ul>
+    </div>
+<% end %>
