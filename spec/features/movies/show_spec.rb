@@ -17,7 +17,7 @@ RSpec.describe "Movies Show View", type: :feature do
     let!(:actor_movie1) { ActorMovie.create!(actor: indy, movie: raiders) }
     let!(:actor_movie3) { ActorMovie.create!(actor: marty, movie: bttf) }
     let!(:actor_movie4) { ActorMovie.create!(actor: doc, movie: bttf) }
-    let!(:actor_movie5) { ActorMovie.create!(actor: doc, movie: bttf) }
+    let!(:actor_movie5) { ActorMovie.create!(actor: biff, movie: bttf) }
 
     let!(:studio2) { Studio.create!(name: "Sony Pictures Classics", location: "New York") }
     let!(:movie2) { Movie.create!(title: "American Movie", creation_year: 1999, genre: "Documentary", studio: studio2) }
@@ -39,8 +39,9 @@ RSpec.describe "Movies Show View", type: :feature do
     it "has a list of all its actors from youngest to oldest" do
       visit "/movies/#{bttf.id}"
 
-      expect(marty.name).to appear_before(biff.name)
-      expect(biff.name).to appear_before(doc.name)
+      expect(page).to have_content("#{marty.name}\n#{biff.name}\n#{doc.name}")
+      # expect(marty.name).to appear_before(biff.name)
+      # expect(biff.name).to appear_before(doc.name)
     end
 
     it "has the average age of all of the movie's actors" do
