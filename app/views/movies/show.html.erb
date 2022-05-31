@@ -5,3 +5,10 @@
   <h3><%= actor.name %></h3>
 <% end %>
 <h3>Average Actors Age: <%= @movie.avg_age %></h3>
+
+<h3>Add an Actor to this Movie</h3>
+<%= form_with url: "/movies/#{@movie.id}", method: :patch do |f| %>
+  <%= f.label :actor, "Actor Name:" %>
+  <%= f.text_field :actor %>
+  <%= f.submit "Search" %>
+<% end %>
