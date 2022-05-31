@@ -14,13 +14,12 @@ RSpec.describe 'Movies Show Page' do
 
   it 'displays the movies title, creation year, genre, a list of actors from youngest to oldest and an average ag of the movies actors' do
     visit "movies/#{@sw.id}"
-
+save_and_open_page
     expect(page).to have_content("Star Wars")
     expect(page).to have_content(1984)
     expect(page).to have_content("Sci-fi")
-    expect("").to appear_before("")
-    expect("").to appear_before("")
-    expect("").to appear_before("")
-    expect(page).to have_content("Average age amoungst Actors: 57.67")
+    expect("Mark Hamill").to appear_before("Carrie Fisher")
+    expect("Carrie Fisher").to appear_before("Harrison Ford")
+    expect(page).to have_content("Average age amoungst actors: 58")
   end
 end
