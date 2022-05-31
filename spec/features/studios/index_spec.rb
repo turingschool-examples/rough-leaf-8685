@@ -6,9 +6,9 @@ RSpec.describe 'studio index page' do
   let!(:movie1) { studio1.movies.create!(title: 'Rock n Rolla', creation_year: 2008, genre: 'Action/Comedy') }
   let!(:movie2) { studio2.movies.create!(title: 'Monsters, Inc.', creation_year: 2001, genre: 'Animation') }
 
-  it "shows the studios attributes and movie titles" do
+  it "displays the studios attributes and movie titles" do
     visit studios_path
-
+    
     within "#studio-#{studio1}" do
       expect(page).to have_content('Name: Dark Castle Entertainment')
       expect(page).to have_content('Location: Los Angeles, CA')
@@ -24,8 +24,3 @@ RSpec.describe 'studio index page' do
     end
   end
 end
-
-# As a user,
-# When I visit the studio index page
-# I see a each studio's name and location
-# And underneath each studio, I see the titles of all of its movies.
