@@ -10,7 +10,7 @@ RSpec.describe Studio, type: :feature do
       movie2 = Movie.create!(title: 'Fast 5', creation_year: 2011, genre: 'Action/Adventure', studio_id: studio2.id)
 
       visit studios_path
-      save_and_open_page
+
       within "#studio-#{studio1.id}" do
         expect(page).to have_content(studio1.name)
         expect(page).to have_content(studio1.location)
