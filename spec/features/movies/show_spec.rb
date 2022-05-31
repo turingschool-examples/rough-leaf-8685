@@ -14,6 +14,7 @@ RSpec.describe 'movie show page', type: :feature do
     MovieActor.create!(movie_id: movie2.id, actor_id: actor3.id)
 
     visit "/movies/#{movie2.id}"
+    save_and_open_page
     expect(page).to have_content("#{movie2.title}")
     expect(page).to have_content("creation year: #{movie2.creation_year}")
     expect(page).to have_content("genre: #{movie2.genre}")
