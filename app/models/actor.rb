@@ -4,6 +4,6 @@ class Actor < ApplicationRecord
   has_many :actors, through: :movies
 
   def coactors
-    actors.where.not(id: id).distinct.pluck(:name)
+    actors.where.not(id: id).distinct.pluck(:name).sort
   end
 end
