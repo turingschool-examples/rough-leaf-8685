@@ -14,8 +14,8 @@ RSpec.describe Studio, type: :feature do
       movie_2 = studio_1.movies.create!(title: "Terminator", creation_year: 1984, genre: "Sci-Fi")
 
       studio_2 = Studio.create!(name: "Pixar", location: "San Francisco")
-      movie_3 = studio_1.movies.create!(title: "Toy Story", creation_year: 1994, genre: "Family")
-      movie_4 = studio_1.movies.create!(title: "Wall-E", creation_year: 2009, genre: "Family")
+      movie_3 = studio_2.movies.create!(title: "Toy Story", creation_year: 1994, genre: "Family")
+      movie_4 = studio_2.movies.create!(title: "Wall-E", creation_year: 2009, genre: "Family")
 
       # binding.pry
 
