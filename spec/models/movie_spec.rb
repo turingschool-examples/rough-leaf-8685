@@ -20,5 +20,9 @@ RSpec.describe Movie do
     it "orders actors in a movie by age" do
       expect(bttf.actors_by_age).to eq([marty, biff, doc])
     end
+
+    it "calculates the average age of actors in a movie" do
+      expect(bttf.actors_average_age.round(2)).to eq(68.67)
+    end
   end
 end

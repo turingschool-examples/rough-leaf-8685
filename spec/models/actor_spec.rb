@@ -15,6 +15,10 @@ RSpec.describe Actor, type: :model do
     it "orders actors by age" do
       expect(Actor.order_by_age).to eq([marty, biff, indy, doc])
     end
+
+    it "calculates the average age of actors" do
+      expect(Actor.average_age).to eq(71)
+    end
   end
 
 end
