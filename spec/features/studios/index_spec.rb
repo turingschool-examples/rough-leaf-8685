@@ -20,7 +20,7 @@ RSpec.describe 'Studio index page', type: :feature do
     bond = uni.movies.create(title: "007", creation_year: "2007", genre: "Action/Spy")
 
     visit '/studios'
-save_and_open_page
+
       expect(page).to have_content('Die Hard')
       expect(page).to have_content('Created in: 1989')
       expect(page).to have_content('Genre: Action')
