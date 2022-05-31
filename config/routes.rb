@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   resources :movies, only: :show
 
   resources :actor_movies, only: :create
+
+  resources :actors, only: :show
 end
