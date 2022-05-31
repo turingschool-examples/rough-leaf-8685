@@ -30,7 +30,7 @@ RSpec.describe Actor do
       ActorMovie.create!(actor_id: actor_5.id, movie_id: movie_2.id)
       ActorMovie.create!(actor_id: actor_6.id, movie_id: movie_2.id)
 
-      expect(actor_1.unique_coworkers).to eq("Karen Allen, Paul Freeman, George Lucas, Kate Capshaw, Amrish Puri")
+      expect(actor_1.unique_coworkers).to eq("Paul Freeman, Kate Capshaw, Amrish Puri, Karen Allen, George Lucas")
     end
   end
 end

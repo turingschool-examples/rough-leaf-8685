@@ -34,7 +34,7 @@ RSpec.describe Actor, type: :feature do
 
       visit "/actors/#{actor_1.id}"
 
-      save_and_open_page
+      # save_and_open_page
       #
       expect(page).to have_content(actor_1.name)
       expect(page).to have_content(actor_1.age)
