@@ -2,8 +2,10 @@ require 'rails_helper'
 
 RSpec.describe 'Movie Show Page' do 
   let!(:studio2) { Studio.create(name: 'Studio Ghibli', location: 'Japan') }
+  let!(:studio3) { Studio.create(name: 'Paramount Pictures Studios', location: 'Hollywood') }
 
-  let!(:movie2) { studio2.movies.create(title: 'Spirited Away', creation_year: 2002, genre: 'Drama') }  
+  let!(:movie2) { studio2.movies.create(title: 'Spirited Away', creation_year: 2002, genre: 'Drama') }
+  let!(:movie4) { studio3.movies.create(title: 'Sonic the Hedgehog', creation_year: 2020, genre: 'Action/Adventure') }
 
   let!(:actor1) { Actor.create!(name: 'Daveigh Chase', age: 32)}
   let!(:actor2) { Actor.create!(name: 'Miyu Irino', age: 51)}
@@ -15,7 +17,8 @@ RSpec.describe 'Movie Show Page' do
   let!(:movie_actor1) { MovieActor.create!(actor_id: actor1.id, movie_id: movie2.id)}
   let!(:movie_actor2) { MovieActor.create!(actor_id: actor2.id, movie_id: movie2.id)}
   let!(:movie_actor3) { MovieActor.create!(actor_id: actor3.id, movie_id: movie2.id)}
-  let!(:movie_actor4) { MovieActor.create!(actor_id: actor5.id, movie_id: movie2.id)}
+  let!(:movie_actor5) { MovieActor.create!(actor_id: actor5.id, movie_id: movie2.id)}
+  let!(:movie_actor4) { MovieActor.create!(actor_id: actor4.id, movie_id: movie4.id)}
 
 
   describe 'user story 2' do 
@@ -25,6 +28,7 @@ RSpec.describe 'Movie Show Page' do
       expect(page).to have_content(movie2.title)
       expect(page).to have_content(movie2.creation_year)
       expect(page).to have_content(movie2.genre)
+      expect(page).to_not have_content(movie4.title)
     end
 
     it 'can list the actors from youngest to oldest' do 
@@ -35,6 +39,7 @@ RSpec.describe 'Movie Show Page' do
       expect(page).to have_content(actor3.name)
       expect("Daveigh Chase").to appear_before("Mari Natsuki")
       expect("Mari Natsuki").to appear_before("Miyu Irino")
+      expect(page).to_not have_content("Jim Carrey")
     end
 
     it 'can show the average age of all the actors' do 
@@ -55,8 +60,6 @@ RSpec.describe 'Movie Show Page' do
       click_on('Submit')
 
       expect(current_path).to eq("/movies/#{movie2.id}")
-      save_and_open_page
-
       expect(page).to have_content("Suzanne Pleshette")
     end
   end

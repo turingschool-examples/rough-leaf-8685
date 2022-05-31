@@ -18,16 +18,19 @@ RSpec.describe 'Studio Index Page' do
       within "#studio-#{studio1.id}" do 
         expect(page).to have_content(studio1.name)
         expect(page).to have_content(studio1.location)
+        expect(page).to_not have_content(studio2.name)
       end
 
       within "#studio-#{studio2.id}" do
         expect(page).to have_content(studio2.name)
         expect(page).to have_content(studio2.location)
+        expect(page).to_not have_content(studio3.name)
       end
 
       within "#studio-#{studio3.id}" do
         expect(page).to have_content(studio3.name)
         expect(page).to have_content(studio3.location)
+        expect(page).to_not have_content(studio1.name)
       end 
     end
 
