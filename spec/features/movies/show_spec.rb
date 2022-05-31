@@ -39,4 +39,38 @@ RSpec.describe "Movie show page" do
     expect(page).to_not have_content("Title: The Wizard of Oz")
     expect(page).to_not have_content("Released: 1939")
   end
+
+  it "displays list of all movies actors from youngest to oldest" do
+    visit "/movies/#{@seven.id}"
+
+    within("#actor-0") do
+      expect(page).to have_content("Jane Powell")
+      expect(page).to_not have_content("Howard Keel")
+    end
+    within("#actor-1") do
+      expect(page).to have_content("Howard Keel")
+      expect(page).to_not have_content("Jane Powell")
+    end
+    expect(page).to_not have_content("Judy Garland")
+    expect(page).to_not have_content("Ann Miller")
+
+    visit "/movies/#{@deck}"
+    within("#actor-0") do
+      expect(page).to have_content("Jane Powell")
+      expect(page).to_not have_content("Ann Miller")
+      expect(page).to_not have_content("Vic Damone")
+    end
+    within("#actor-1") do
+      expect(page).to have_content("Vic Damone")
+      expect(page).to_not have_content("Ann Miller")
+      expect(page).to_not have_content("Jane Powell")
+    end
+    within("#actor-1") do
+      expect(page).to have_content("Ann Miller")
+      expect(page).to_not have_content("Jane Powell")
+      expect(page).to_not have_content("Vic Damone")
+    end
+    expect(page).to_not have_content("Judy Garland")
+    expect(page).to_not have_content("Howard Keel")
+  end
 end
