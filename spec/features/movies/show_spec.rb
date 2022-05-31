@@ -73,8 +73,8 @@ RSpec.describe Movie, type: :feature do
 
         expect(page).to_not have_content("MiddleActor")
       
-          fill_in "actors_name", with: "MiddleActor"
-          click_on "submit"
+          fill_in :actorname, with: "MiddleActor"
+          click_on "Submit"
         
         expect(current_path).to eq("/movies/#{movie1.id}")
         expect(page).to have_content("MiddleActor")
