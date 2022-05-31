@@ -51,6 +51,7 @@ RSpec.describe 'movie show page', type: :feature do
     end
 
     it 'show average age of its actors' do
-
+        visit "/movies/#{@movie7.id}"
+        expect(page).to have_content("Average Age of Actors: 73.75")
     end
 end
