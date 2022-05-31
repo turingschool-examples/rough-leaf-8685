@@ -93,10 +93,10 @@ RSpec.describe "Movie show page" do
 
     fill_in("actor", with: "Debbie Reynolds")
 
-    click_button "Submit"
+    click_button "Add Actor to Movie"
 
     expect(current_path).to eq("/movies/#{@deck.id}")
-
+    
     within("#actor-0") do
       expect(page).to have_content("Debbie Reynolds")
       expect(page).to_not have_content("Jane Powell")
