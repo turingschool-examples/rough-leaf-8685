@@ -1,3 +1,10 @@
 <h1>Title: <%= @movie.title %></h1>
 <p>Released: <%= @movie.creation_year %></p>
 <p>Genre: <%= @movie.genre %></p>
+<p>Actors: </p>
+<% @movie.actors_youngest_to_oldest.each_with_index do |actor, index| %>
+  <div id="actor-<%= index %>">
+    <%= actor.name %>
+    <br>
+  </div>
+<% end %>

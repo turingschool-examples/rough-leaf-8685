@@ -16,7 +16,7 @@ RSpec.describe Movie do
     
       @jane = Actor.create!(name: "Jane Powell", age: 23)
       @vic = Actor.create!(name: "Vic Damone", age: 25)
-      @ann = Actor.create!(name: "Ann Miiller", age: 35)
+      @ann = Actor.create!(name: "Ann Miller", age: 35)
       @howard = Actor.create!(name: "Howard Keel", age: 30)
       
       ActorMovie.create!(actor: @jane, movie: @seven)

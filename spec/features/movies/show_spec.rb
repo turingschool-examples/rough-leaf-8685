@@ -13,7 +13,7 @@ RSpec.describe "Movie show page" do
     
     @jane = Actor.create!(name: "Jane Powell", age: 23)
     @vic = Actor.create!(name: "Vic Damone", age: 25)
-    @ann = Actor.create!(name: "Ann Miiller", age: 35)
+    @ann = Actor.create!(name: "Ann Miller", age: 35)
     @howard = Actor.create!(name: "Howard Keel", age: 30)
     @judy = Actor.create!(name: "Judy Garland", age: 28)
     @ray = Actor.create!(name: "Ray Bolger", age: 38)
@@ -54,7 +54,8 @@ RSpec.describe "Movie show page" do
     expect(page).to_not have_content("Judy Garland")
     expect(page).to_not have_content("Ann Miller")
 
-    visit "/movies/#{@deck}"
+    visit "/movies/#{@deck.id}"
+  
     within("#actor-0") do
       expect(page).to have_content("Jane Powell")
       expect(page).to_not have_content("Ann Miller")
@@ -65,7 +66,7 @@ RSpec.describe "Movie show page" do
       expect(page).to_not have_content("Ann Miller")
       expect(page).to_not have_content("Jane Powell")
     end
-    within("#actor-1") do
+    within("#actor-2") do
       expect(page).to have_content("Ann Miller")
       expect(page).to_not have_content("Jane Powell")
       expect(page).to_not have_content("Vic Damone")
