@@ -25,10 +25,8 @@ ActiveRecord::Schema.define(version: 2022_05_31_172902) do
   create_table "actors", force: :cascade do |t|
     t.string "name"
     t.integer "age"
-    t.bigint "movie_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["movie_id"], name: "index_actors_on_movie_id"
   end
 
   create_table "movies", force: :cascade do |t|
@@ -50,6 +48,5 @@ ActiveRecord::Schema.define(version: 2022_05_31_172902) do
 
   add_foreign_key "actor_movies", "actors"
   add_foreign_key "actor_movies", "movies"
-  add_foreign_key "actors", "movies"
   add_foreign_key "movies", "studios"
 end
