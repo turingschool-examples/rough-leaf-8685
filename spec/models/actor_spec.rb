@@ -25,15 +25,21 @@ RSpec.describe Actor do
   let!(:actor_movie1) { movie2.actor_movies.create!(actor_id: actor1.id) }
   let!(:actor_movie2) { movie2.actor_movies.create!(actor_id: actor2.id) }
 
-  describe "::order_by_age" do
+  describe '::order_by_age' do
     it "lists actors in order by age" do
       expect(Actor.order_by_age).to eq([actor1, actor2])
     end
   end
-  
-  describe "::average_age" do
+
+  describe '::average_age' do
     it "calculates average age of actors" do
       expect(Actor.average_age).to eq(50)
+    end
+  end
+
+  describe '#co_actors' do
+    it "returns all actors a particular actor has worked with" do
+      expect(actor1.co_actor).to eq([actor2])
     end
   end
 end

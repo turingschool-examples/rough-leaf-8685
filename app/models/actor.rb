@@ -12,4 +12,10 @@ class Actor < ApplicationRecord
   def self.average_age
     average(:age).to_i
   end
+
+  def co_actors
+    require "pry"; binding.pry
+    self.joins(:actor_movies) # <<< finish this <<<
+  end
+
 end

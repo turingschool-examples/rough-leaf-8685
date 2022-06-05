@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :movies, only: [:show, :new]
 
-  # resources :actor_movies, only: [:create]
+  resources :actors, only: [:show]
 
   post "/actor_movies/new", to: "actor_movies#create"
   delete "/actor_movies", to: "actor_movies#destroy"
