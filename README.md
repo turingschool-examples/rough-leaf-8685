@@ -59,6 +59,7 @@ We are creating an application to track studios, movies, and actors
 
 Some of the initial migrations have been done for you.
 
+## Database Design
 ![Screen Shot 2022-06-05 at 5 18 20 PM](https://user-images.githubusercontent.com/99001315/172074699-fa139353-ec63-4f3b-9ce2-4c32f3de2167.png)
 
 ## User Stories
