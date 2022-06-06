@@ -1,0 +1,8 @@
+<strong><%= @actor.name %></strong><br>
+
+<p>Age: <%= @actor.age %></p>
+
+<p>Actor's <%= @actor.name %> has worked with: </p>
+<% @actor.co_actors.each do |actor| %>
+  <%= actor.name %>
+<% end %>

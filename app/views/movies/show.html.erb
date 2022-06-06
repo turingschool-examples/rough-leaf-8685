@@ -1,0 +1,29 @@
+<p>Title: <%= @movie.title %></p>
+<p>Creation Year: <%= @movie.creation_year %></p>
+<p>Genre: <%= @movie.genre %></p>
+
+<% @movie.actors.each do |actor| %>
+  <%= actor.name %>
+<% end %>
+
+<p>Average Age of Actors: <%= Actor.average_age %></p>
+
+<div class="add">
+  <strong> Add an Actor to this Movie </strong>
+  <%= form_with url: "/actor_movies/new", method: :post do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= f.hidden_field :movie_id, value: @movie.id %>
+    <%= f.submit 'Submit' %>
+  <% end %>
+</div>
+
+<div class="delete">
+  <strong>Delete an Actor from this Movie</strong>
+  <%= form_with url: "/actor_movies", method: :delete do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= f.hidden_field :movie_id, value: @movie.id %>
+    <%= f.submit 'Submit' %>
+  <% end %>
+</div>
